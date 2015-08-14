@@ -1,0 +1,13 @@
+c:\users\jabex\documents\visual studio 2012\Projects\HAMMERTOSS_Part_1\HAMMERTOSS_Part_1\obj\Debug\HAMMERTOSS_P1.csprojResolveAssemblyReference.cache
+c:\users\jabex\documents\visual studio 2012\Projects\HAMMERTOSS_Part_1\HAMMERTOSS_Part_1\bin\Debug\HAMMERTOSS_Part_1.exe.config
+c:\users\jabex\documents\visual studio 2012\Projects\HAMMERTOSS_Part_1\HAMMERTOSS_Part_1\bin\Debug\HAMMERTOSS_Part_1.exe
+c:\users\jabex\documents\visual studio 2012\Projects\HAMMERTOSS_Part_1\HAMMERTOSS_Part_1\bin\Debug\HAMMERTOSS_Part_1.pdb
+c:\users\jabex\documents\visual studio 2012\Projects\HAMMERTOSS_Part_1\HAMMERTOSS_Part_1\obj\Debug\HAMMERTOSS_Part_1.exe
+c:\users\jabex\documents\visual studio 2012\Projects\HAMMERTOSS_Part_1\HAMMERTOSS_Part_1\obj\Debug\HAMMERTOSS_Part_1.pdb
+C:\Users\jabex\Desktop\HAMMERTOSS_Part_1\HAMMERTOSS_Part_1\bin\Debug\HAMMERTOSS_Part_1.exe.config
+C:\Users\jabex\Desktop\HAMMERTOSS_Part_1\HAMMERTOSS_Part_1\obj\Debug\HAMMERTOSS_Part_1.exe
+C:\Users\jabex\Desktop\HAMMERTOSS_Part_1\HAMMERTOSS_Part_1\obj\Debug\HAMMERTOSS_Part_1.pdb
+E:\HAMMERTOSS_P1\HAMMERTOSS_Part_1\bin\Debug\HAMMERTOSS_Part_1.exe.config
+E:\HAMMERTOSS_P1\HAMMERTOSS_Part_1\obj\Debug\HAMMERTOSS_Part_1.exe
+E:\HAMMERTOSS_P1\HAMMERTOSS_Part_1\obj\Debug\HAMMERTOSS_Part_1.pdb
+E:\hammertoss\Uploader\HAMMERTOSS_Part_1\bin\Debug\Uploader.exe.config
