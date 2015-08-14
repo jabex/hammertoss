@@ -1,0 +1,54 @@
+
+Image Name                     PID Session Name        Session#    Mem Usage
+========================= ======== ================ =========== ============
+System Idle Process              0 Services                   0         24 K
+System                           4 Services                   0        524 K
+smss.exe                       272 Services                   0        816 K
+csrss.exe                      352 Services                   0      3,576 K
+wininit.exe                    400 Services                   0      3,248 K
+csrss.exe                      408 Console                    1      5,676 K
+winlogon.exe                   456 Console                    1      4,640 K
+services.exe                   492 Services                   0      7,456 K
+lsass.exe                      508 Services                   0      7,600 K
+lsm.exe                        516 Services                   0      3,004 K
+svchost.exe                    632 Services                   0      6,856 K
+VBoxService.exe                692 Services                   0      5,032 K
+svchost.exe                    748 Services                   0      5,956 K
+svchost.exe                    816 Services                   0     13,020 K
+svchost.exe                    880 Services                   0     60,600 K
+svchost.exe                    936 Services                   0     25,280 K
+svchost.exe                   1108 Services                   0      8,160 K
+svchost.exe                   1236 Services                   0     14,224 K
+spoolsv.exe                   1448 Services                   0      8,624 K
+svchost.exe                   1476 Services                   0     10,920 K
+svchost.exe                   1584 Services                   0     12,456 K
+RaRegistry.exe                1628 Services                   0      4,052 K
+RtlService.exe                1656 Services                   0      3,280 K
+sqlwriter.exe                 1708 Services                   0      4,384 K
+RtWLan.exe                    1716 Console                    1     11,528 K
+ss_conn_service.exe           1736 Services                   0      3,544 K
+vmware-usbarbitrator.exe      1788 Services                   0      4,416 K
+dwm.exe                        856 Console                    1      3,928 K
+explorer.exe                   560 Console                    1     63,104 K
+taskhost.exe                  1968 Console                    1      6,476 K
+VBoxTray.exe                   648 Console                    1      4,976 K
+jusched.exe                   1756 Console                    1      7,876 K
+SearchIndexer.exe             2156 Services                   0     26,648 K
+svchost.exe                   2868 Services                   0     21,616 K
+wmpnetwk.exe                  2928 Services                   0      8,176 K
+svchost.exe                   2416 Services                   0      4,460 K
+firefox.exe                   1680 Console                    1    123,420 K
+EasyPHP-DevServer-14.1VC1     3048 Console                    1      7,668 K
+eds-mysqld.exe                3376 Console                    1     93,712 K
+eds-httpd.exe                  572 Console                    1     10,532 K
+conhost.exe                   3804 Console                    1      3,664 K
+eds-httpd.exe                 1152 Console                    1     13,656 K
+audiodg.exe                   2100 Services                   0     13,972 K
+MSBuild.exe                   2372 Console                    1     30,300 K
+conhost.exe                   1972 Console                    1      2,604 K
+WDExpress.exe                 1576 Console                    1    195,068 K
+HAMMERTOSS_Part_2.vshost.      892 Console                    1     13,588 K
+SearchProtocolHost.exe        2596 Services                   0      6,740 K
+SearchFilterHost.exe          2724 Services                   0      5,168 K
+WDExpress.exe                 3824 Console                    1    177,588 K
+HAMMERTOSS_Part_2.vshost.     2356 Con
