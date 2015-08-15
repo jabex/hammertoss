@@ -18,7 +18,7 @@ where:
 		<payload> := <requests>
 
 			<request> := <cmd-type>
-						 <cmd-param>?
+					<cmd-param>?
 
 			<cmd-tipe> is a variable field, specifying the type of command.
 			<cmd-param> if present, is a variable field whose value are command parameters.
@@ -39,19 +39,19 @@ Packet structures
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
 | offset | msg-type | cmd-type | cmd-param | padding |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
-0	2 	 	 2                  256				   300
+0	2 	 	 2					256					300
 
 
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
-| offset | msg-type | 	 		pwd-sha-256			 |
+| offset | msg-type | 	 		pwd-sha-256			|
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
-0	2 	 	 2                  256				   300
+0	2 	 	 2					256				   300
 
 
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
 | offset | msg-type | 			response			 |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
-0	2 	 	 2                  256				   300
+0	2 	 	 2					 256				300
 
 
 Data structures:
@@ -86,13 +86,13 @@ Protocol:
 		
 	  |  <-----request, cmd----------  |
 
-	  |								   |	
 
-	  |  -----response, std_out----->  |	
 
-	  |  -----response, std_out----->  |	
+	  |  -----response, std_out----->  |
 
-	  |  -----response, std_out----->  |	
+	  |  -----response, std_out----->  |
+
+	  |  -----response, std_out----->  |
 	
 
 
@@ -102,13 +102,13 @@ Protocol:
 		
 	  |  <-----request, cmd----------  |
 
-	  |  						       |	
 
-	  |  -----response, std_out----->  |	
 
-	  |  -----response, std_out----->  |	
+	  |  -----response, std_out----->  |
 
-	  |  -----response, std_out----->  |	
+	  |  -----response, std_out----->  |
+
+	  |  -----response, std_out----->  |
 	
 
 — MSG: SHA-256 PASSWD
@@ -118,7 +118,7 @@ Protocol:
 	  |  <------PWD-SHA-256----------  |
 
 
-	  |  -----response, ack -------->  |	
+	  |  -----response, ack -------->  |
 
 
 
