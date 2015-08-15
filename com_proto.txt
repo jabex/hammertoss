@@ -14,11 +14,11 @@ where:
 
 	<msg-type> is an 16-bit unsigned integer field, specifying the type of the message.
 
-	<payload> is a variable whose value is the part of the transmitted data of message defined by:				
+	<payload> is a variable whose value is the part of the transmitted data of message defined by:
 		<payload> := <requests>
 
 			<request> := <cmd-type>
-				    	 <cmd-param>?
+						 <cmd-param>?
 
 			<cmd-tipe> is a variable field, specifying the type of command.
 			<cmd-param> if present, is a variable field whose value are command parameters.
@@ -37,19 +37,19 @@ where:
 Packet structures
 
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
-| offset | msg-type | cmd-type | cmd-param | padding |   
+| offset | msg-type | cmd-type | cmd-param | padding |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
 0	2 	 	 2                  256				   300
 
 
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
-| offset | msg-type | 	 	     pwd-sha-256		 |			   
+| offset | msg-type | 	 		pwd-sha-256			 |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
 0	2 	 	 2                  256				   300
 
 
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
-| offset | msg-type | 		    response			 |
+| offset | msg-type | 			response			 |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
 0	2 	 	 2                  256				   300
 
@@ -82,11 +82,11 @@ Protocol:
 
 — MSG: CMD
 
-	Client						Server
+	Client							Server
 		
 	  |  <-----request, cmd----------  |
 
-	  |  						       |	
+	  |								   |	
 
 	  |  -----response, std_out----->  |	
 
@@ -98,7 +98,7 @@ Protocol:
 
 — MSG: CMD, PARM
 
-	Client						Server
+	Client							Server
 		
 	  |  <-----request, cmd----------  |
 
@@ -113,7 +113,7 @@ Protocol:
 
 — MSG: SHA-256 PASSWD
 
-	Client						Server
+	Client							Server
 		
 	  |  <------PWD-SHA-256----------  |
 
