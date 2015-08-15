@@ -1,0 +1,167 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
+{\fonttbl\f0\fmodern\fcharset0 Courier-Bold;\f1\fmodern\fcharset0 Courier;}
+{\colortbl;\red255\green255\blue255;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww25280\viewh13440\viewkind0
+\deftab720
+\pard\pardeftab720
+
+\f0\b\fs32 \cf0 \expnd0\expndtw0\kerning0
+Communication Protocol - Harmmertoss \
+\
+Messages:
+\f1\b0 \expnd0\expndtw0\kerning0
+\
+\
+<message> is definided by:\
+	\
+	<message> := <offset>\
+			    <msg-type>\
+			    <payload>\
+			    <padding>?\
+\
+where:\
+	<offset> is an 16-bit field, specifing 4 unsigned integer offsets of message part.\
+\
+	<msg-type> is an 16-bit unsigned integer field, specifying the type of the message.\
+\
+	<payload> is a variable whose value is the part of the transmitted data of message defined by:				\
+		<payload> := <requests>\
+\
+			<request> := <cmd-type>\
+				    	  <cmd-param>?\
+\
+			<cmd-tipe> is a variable field, specifying the type of command.\
+			<cmd-param> if present, is a variable field whose value are command parameters.\
+	\
+		<payload> := <pwd-sha-256>\
+			\
+			<pwd-sha-256> is a 256-bit field, that contanis the hash of password cryptography (SHA-256).\
+			\
+		<payload> := <response>\
+			<response> is a variable field whose value is the output of client-side command execution 
+\f0\b \expnd0\expndtw0\kerning0
+std_out
+\f1\b0 \expnd0\expndtw0\kerning0
+ or 
+\f0\b \expnd0\expndtw0\kerning0
+ack
+\f1\b0 \expnd0\expndtw0\kerning0
+.\
+\
+\
+	<padding> if present, is a variable field whose value is the random length padding.\
+\
+\
+
+\f0\b \expnd0\expndtw0\kerning0
+Packet structures\
+\
+
+\f1\b0 \expnd0\expndtw0\kerning0
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-\
+| offset | msg-type | cmd-type | cmd-param | padding |   \
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-\
+0	2 	 	 2                  256				  300\
+\
+\
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-\
+| offset | msg-type | 	 	     pwd-sha-256		     |			   \
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-\
+0	2 	 	 2                  256				  300\
+\
+\
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-\
+| offset | msg-type | 		    response			    |\
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-\
+0	2 	 	 2                  256				  300\
+\
+\
+
+\f0\b \expnd0\expndtw0\kerning0
+Data structures:
+\f1\b0 \expnd0\expndtw0\kerning0
+\
+\
+	hashtable [msg-type]\{\
+		\{ 0, request\{ [cmd_type] \},\
+		\{ 1, request\{ [cmd_type], [cmd_param] \},\
+		\{ 2, [pwd_sha_256] \},\
+		\{ 3, [response] \}\
+	\}\
+	\
+	struct [request]\{\
+		[cmd_type],\
+		[cmd_param]\
+	\}\
+\
+	byte[] [cmd_type]\
+\
+	byte[] [cmd_param]\
+\
+	byte[] [pwd_sha_256]\
+\
+	byte[]  [response] \
+\
+	\
+ \
+
+\f0\b \expnd0\expndtw0\kerning0
+Protocol:\
+\
+
+\f1\b0 \expnd0\expndtw0\kerning0
+\'97 MSG: CMD\
+
+\f0\b \expnd0\expndtw0\kerning0
+\
+	Client							Server
+\f1\b0 \expnd0\expndtw0\kerning0
+\
+		\
+	  |  <-----request, cmd----------  |\
+\
+\
+\
+	  |  -----response, std_out----->  |	\
+\
+	  |  -----response, std_out----->  |	\
+\
+	  |  -----response, std_out----->  |	\
+	\
+\
+\
+\'97 MSG: CMD, PARM\
+
+\f0\b \expnd0\expndtw0\kerning0
+\
+	Client							Server
+\f1\b0 \expnd0\expndtw0\kerning0
+\
+		\
+	  |  <-----request, cmd----------  |\
+\
+\
+\
+	  |  -----response, std_out----->  |	\
+\
+	  |  -----response, std_out----->  |	\
+\
+	  |  -----response, std_out----->  |	\
+	\
+\
+\'97 MSG: SHA-256 PASSWD\
+
+\f0\b \expnd0\expndtw0\kerning0
+\
+	Client						Server
+\f1\b0 \expnd0\expndtw0\kerning0
+\
+		\
+	  |  <------PWD-SHA-256----------  |\
+\
+\
+	  |  -----response, ack -------->  |	\
+\
+\
+\
+}
