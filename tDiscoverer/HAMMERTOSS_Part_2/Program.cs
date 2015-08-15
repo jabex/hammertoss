@@ -313,7 +313,7 @@ namespace tDiscoverer
             file_writer.Close();
 
             // Save compressed string into a file 
-            byte[] std_out_upx = Zip(std_out); // String compression
+            byte[] std_out_upx = Zip(std_out);
 
             file_out = "output_upx.txt";
             file_writer = new FileStream(file_out, FileMode.OpenOrCreate, FileAccess.Write);
