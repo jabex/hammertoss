@@ -5,12 +5,12 @@ https://www2.fireeye.com/rs/848-DID-242/images/rpt-apt29-hammertoss.pdf
 
 ### Requirements:
   - microsoft visual studio 2012 or latest version
-  - a local web server where you can save a web page that has within at least a jpeg image 
+  - a local web server where you can save a web page that has within at least one jpeg image 
 
 
 [Uploader] 
 ##### Step 1
-Set path of the image where you should inject the  payload
+Set the path of the image where you should inject the payload
 
 ```sh
 string file_in = @"C:\Program Files\EasyPHP-DevServer-14.1VC11\data\localweb\projects\test\lena.jpg";
